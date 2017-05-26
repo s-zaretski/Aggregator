@@ -2,8 +2,6 @@ package com.sphincs.model;
 
 import java.util.List;
 
-import com.sphincs.vo.Vacancy;
-
 public class Provider {
 
     private Strategy strategy;
@@ -20,7 +18,7 @@ public class Provider {
         this.strategy = strategy;
     }
 
-    public List<Vacancy> getVacancies(String searchRequest) {
-        return strategy.getVacancies(searchRequest);
+    public <T> List<T> runInvoice(String... searchRequest) {
+        return strategy.runInvoice(searchRequest);
     }
 }

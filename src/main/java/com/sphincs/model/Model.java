@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.sphincs.view.View;
-import com.sphincs.vo.Vacancy;
 
-public class Model {
+public class Model<T> {
 
     private View view;
     private List<Provider> providers;
@@ -20,10 +19,10 @@ public class Model {
         return providers;
     }
 
-    public void findJob(String searchRequest) {
-        List<Vacancy> vacancies = new ArrayList<>();
-        providers.forEach(provider -> vacancies.addAll(provider.getVacancies(searchRequest)));
-        view.update(vacancies);
+    public void runInvoice(String... searchRequest) {
+        List<T> result = new ArrayList<>();
+        providers.forEach(provider -> result.addAll(provider.runInvoice(searchRequest)));
+        view.update(result);
     }
 
 }

@@ -19,13 +19,13 @@ public class HHStrategy implements Strategy {
             "https://hh.ru/search/vacancy?text=%s&clusters=true&no_magic=true&enable_snippets=true&page=%s";
 
     @Override
-    public List<Vacancy> getVacancies(String searchRequest) {
+    public List<Vacancy> runInvoice(String... searchRequest) {
         List<Vacancy> vacancies = new ArrayList<>();
         try {
             int page = 0;
             Document doc;
 
-            while ((page < 100) && (doc = getDocument(searchRequest, page)) != null) {
+            while ((page < 100) && (doc = getDocument(page, searchRequest)) != null) {
                 Elements elements = doc.select("[data-qa=vacancy-serp__vacancy]");
                 if (!elements.isEmpty()) {
                     elements.forEach(element -> vacancies.add(creatreVacancyFromElement(element)));
@@ -44,7 +44,7 @@ public class HHStrategy implements Strategy {
         return emptyList();
     }
 
-    private Document getDocument(String searchString, int page) throws IOException {
+    private Document getDocument(int page, String... searchString) throws IOException {
         String url = String.format(URL_FORMAT, searchString, page);
         return Jsoup.connect(url)
                 .userAgent("Mozilla/5.0 (Windows; U; WindowsNT 5.1; en-US; rv1.8.1.6) Gecko/20070725 Firefox/2.0.0.6")

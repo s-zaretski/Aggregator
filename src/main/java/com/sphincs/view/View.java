@@ -3,11 +3,10 @@ package com.sphincs.view;
 import java.util.List;
 
 import com.sphincs.Controller;
-import com.sphincs.vo.Vacancy;
 
-public interface View {
+public interface View<T> {
 
-    void update(List<Vacancy> vacancies);
+    void update(List<T> vacancies);
 
     void setController(Controller controller);
 

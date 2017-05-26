@@ -1,6 +1,7 @@
 package com.sphincs;
 
 import com.sphincs.model.Model;
+import com.sphincs.model.Provider;
 
 public class Controller {
 
@@ -10,11 +11,11 @@ public class Controller {
         this.model = model;
     }
 
-    public Model getModel() {
+    public Model<Provider> getModel() {
         return model;
     }
 
-    public void findJob(String searchRequest) {
-        model.findJob(searchRequest);
+    public void runInvoice(String... searchRequest) {
+        model.runInvoice(searchRequest);
     }
 }
