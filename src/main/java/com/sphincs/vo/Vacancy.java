@@ -94,7 +94,14 @@ public class Vacancy {
 
     @Override
     public String toString() {
-        return "Vacancy{ " + "\ntitle='" + title + '\'' + ", \nsalary='" + salary + '\'' + ", \ncity='" + city + '\''
-                + ", \ncompanyName='" + companyName + '\'' + ", \nurl='" + url + '\'' + "} \n";
+        //@formatter:off
+        return "Vacancy{ " +
+                "\ntitle='" + title + '\'' +
+                ", \nsalary='" + salary + '\'' +
+                ", \ncity='" + city + '\'' + "" +
+                ", \ncompanyName='" + companyName + '\'' +
+                ", \nurl='" + url + '\'' +
+                "} \n";
+        //@formatter:on
     }
 }

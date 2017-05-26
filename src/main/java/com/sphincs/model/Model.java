@@ -16,10 +16,13 @@ public class Model {
         this.providers = providers;
     }
 
-    public void selectCity(String cityName) {
+    public List<Provider> getProviders() {
+        return providers;
+    }
+
+    public void findJob(String searchRequest) {
         List<Vacancy> vacancies = new ArrayList<>();
-        providers.stream()
-                .forEach(provider -> vacancies.addAll(provider.getJavaVacancies(cityName)));
+        providers.forEach(provider -> vacancies.addAll(provider.getVacancies(searchRequest)));
         view.update(vacancies);
     }
 

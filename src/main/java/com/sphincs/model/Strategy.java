@@ -6,6 +6,6 @@ import com.sphincs.vo.Vacancy;
 
 public interface Strategy {
 
-    List<Vacancy> getVacancies(String searchString);
+    List<Vacancy> getVacancies(String searchRequest);
 
 }

@@ -12,11 +12,15 @@ public class Provider {
         this.strategy = strategy;
     }
 
+    public Strategy getStrategy() {
+        return strategy;
+    }
+
     public void setStrategy(Strategy strategy) {
         this.strategy = strategy;
     }
 
-    public List<Vacancy> getJavaVacancies(String searchString) {
-        return strategy.getVacancies(searchString);
+    public List<Vacancy> getVacancies(String searchRequest) {
+        return strategy.getVacancies(searchRequest);
     }
 }
