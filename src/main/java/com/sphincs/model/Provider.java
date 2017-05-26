@@ -21,6 +21,6 @@ public class Provider {
     }
 
     public List<Vacancy> getVacancies(String searchRequest) {
-        return strategy.getVacancies(searchRequest);
+        return strategy.runInvoice(searchRequest);
     }
 }

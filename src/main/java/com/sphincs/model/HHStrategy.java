@@ -19,7 +19,7 @@ public class HHStrategy implements Strategy {
             "https://hh.ru/search/vacancy?text=%s&clusters=true&no_magic=true&enable_snippets=true&page=%s";
 
     @Override
-    public List<Vacancy> getVacancies(String searchRequest) {
+    public List<Vacancy> runInvoice(String searchRequest) {
         List<Vacancy> vacancies = new ArrayList<>();
         try {
             int page = 0;
