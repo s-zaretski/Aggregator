@@ -16,8 +16,10 @@ import com.sphincs.vo.Contact;
 public class DatingStrategy implements Strategy {
 
     private final String PREFIX = "https://www.mamba.ru/";
+//    private final String URL_FORMAT = PREFIX
+//            + "bbs/search.phtml?iAm=1&lookFor=2&ageMin=%s&ageMax=%s&location=248_249_255_0&target=0&submitSearch=Y";
     private final String URL_FORMAT = PREFIX
-            + "bbs/search.phtml?iAm=1&lookFor=2&ageMin=%s&ageMax=%s&location=248_249_255_0&target=0&submitSearch=Y";
+            + "bbs/search.phtml?iAm=1&lookFor=2&ageMin=%s&ageMax=%s&location=248_249_0_0&target=0&submitSearch=Y";
 
     @Override
     public List<Contact> runInvoice(String... searchRequest) {

@@ -59,6 +59,9 @@ public class HtmlView<T> implements View<T> {
                         .attr("href", vacancy.getUrl())
                         .last()
                         .text(vacancy.getTitle());
+                if (elements.select("[class=title]").text().toLowerCase().contains("международник")) {
+                    continue;
+                }
                 body.append(elements.outerHtml())
                         .append("\n");
             }
