@@ -1,5 +1,6 @@
 package com.sphincs.model;
 
+import static com.sphincs.view.utils.Constants.HH_URL_FORMAT;
 import static java.util.Collections.emptyList;
 
 import java.io.IOException;
@@ -14,10 +15,6 @@ import org.jsoup.select.Elements;
 import com.sphincs.vo.Vacancy;
 
 public class HHStrategy implements Strategy {
-
-    private final String URL_FORMAT =
-            "https://hh.ru/search/vacancy?text=%s&clusters=true&no_magic=true&enable_snippets=true&page=%s";
-
 
     @Override
     public List<Vacancy> runInvoice(String... searchRequest) {
@@ -46,7 +43,7 @@ public class HHStrategy implements Strategy {
     }
 
     private Document getDocument(int page, String... searchString) throws IOException {
-        String url = String.format(URL_FORMAT, searchString[0], page);
+        String url = String.format(HH_URL_FORMAT, searchString[0], page);
         return Jsoup.connect(url)
                 .userAgent("Mozilla/5.0 (Windows; U; WindowsNT 5.1; en-US; rv1.8.1.6) Gecko/20070725 Firefox/2.0.0.6")
                 .referrer("none")

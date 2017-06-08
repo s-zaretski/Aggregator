@@ -1,5 +1,7 @@
 package com.sphincs.model;
 
+import static com.sphincs.view.utils.Constants.DATING_PREFIX;
+import static com.sphincs.view.utils.Constants.DATING_URL_FORMAT;
 import static java.util.Collections.emptyList;
 
 import java.io.IOException;
@@ -14,10 +16,6 @@ import org.jsoup.select.Elements;
 import com.sphincs.vo.Contact;
 
 public class DatingStrategy implements Strategy {
-
-    private final String PREFIX = "https://www.mamba.ru/";
-    private final String URL_FORMAT = PREFIX
-            + "bbs/search.phtml?iAm=1&lookFor=2&ageMin=%s&ageMax=%s&location=248_249_0_0&target=0&submitSearch=Y";
 
     @Override
     public List<Contact> runInvoice(String... searchRequest) {
@@ -39,7 +37,7 @@ public class DatingStrategy implements Strategy {
     }
 
     private Document getDocument(String... searchString) throws IOException {
-        String url = String.format(URL_FORMAT, searchString);
+        String url = String.format(DATING_URL_FORMAT, searchString);
         return Jsoup.connect(url)
                 .userAgent("Mozilla/5.0 (Windows; U; WindowsNT 5.1; en-US; rv1.8.1.6) Gecko/20070725 Firefox/2.0.0.6")
                 .referrer("none")
@@ -52,7 +50,7 @@ public class DatingStrategy implements Strategy {
         String age = ageArray[0] + " " + ageArray[1] + " " + ageArray[2];
         String reason = getReason(element);
         String message = getMessage(element);
-        String url = PREFIX + getURL(element);
+        String url = DATING_PREFIX + getURL(element);
         return new Contact(date, age, reason, message, url);
     }
 
