@@ -1,13 +1,14 @@
 package com.sphincs.model;
 
 import static com.sphincs.view.utils.Constants.HH_URL_FORMAT;
+import static java.lang.String.format;
 import static java.util.Collections.emptyList;
+import static org.jsoup.Jsoup.connect;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -43,8 +44,8 @@ public class HHStrategy implements Strategy {
     }
 
     private Document getDocument(int page, String... searchString) throws IOException {
-        String url = String.format(HH_URL_FORMAT, searchString[0], page);
-        return Jsoup.connect(url)
+        String url = format(HH_URL_FORMAT, searchString[0], page);
+        return connect(url)
                 .userAgent("Mozilla/5.0 (Windows; U; WindowsNT 5.1; en-US; rv1.8.1.6) Gecko/20070725 Firefox/2.0.0.6")
                 .referrer("none")
                 .get();
