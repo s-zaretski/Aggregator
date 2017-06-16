@@ -21,6 +21,23 @@ import com.sphincs.vo.Advert;
 
 public class AdvertStrategy implements Strategy {
 
+    private static String[] invoice = new String[2];
+
+    static {
+        invoice[0] = "1";
+        invoice[1] = "1";
+    }
+
+    @Override
+    public String[] getInvoice() {
+        return invoice;
+    }
+
+    @Override
+    public void setInvoice(final String[] invoice) {
+        this.invoice = invoice;
+    }
+
     @Override
     public List<Advert> runInvoice(String... searchRequest) {
         List<Advert> adverts = new ArrayList<>();
@@ -46,7 +63,7 @@ public class AdvertStrategy implements Strategy {
             }
             List<Advert> sortedAdverts = adverts.stream()
                     .sorted(Comparator.comparing(Advert::getCost))
-                    .filter(advert -> getCost(advert) < 200)
+                    .filter(advert -> getCost(advert) < 220)
                     .collect(Collectors.toList());
             return sortedAdverts;
         } catch (IOException e) {

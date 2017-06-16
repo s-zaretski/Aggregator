@@ -18,6 +18,23 @@ import com.sphincs.vo.Contact;
 
 public class DatingStrategy implements Strategy {
 
+    private static String[] invoice = new String[2];
+
+    static {
+        invoice[0] = "18";
+        invoice[1] = "40";
+    }
+
+    @Override
+    public String[] getInvoice() {
+        return invoice;
+    }
+
+    @Override
+    public void setInvoice(final String[] invoice) {
+        this.invoice = invoice;
+    }
+
     @Override
     public List<Contact> runInvoice(String... searchRequest) {
         List<Contact> contacts = new ArrayList<>();

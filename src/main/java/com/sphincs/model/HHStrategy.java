@@ -17,6 +17,22 @@ import com.sphincs.vo.Vacancy;
 
 public class HHStrategy implements Strategy {
 
+    private static String[] invoice = new String[1];
+
+    static {
+        invoice[0] = "водитель Брест";
+    }
+
+    @Override
+    public String[] getInvoice() {
+        return invoice;
+    }
+
+    @Override
+    public void setInvoice(final String[] invoice) {
+        this.invoice = invoice;
+    }
+
     @Override
     public List<Vacancy> runInvoice(String... searchRequest) {
         List<Vacancy> vacancies = new ArrayList<>();

@@ -8,20 +8,21 @@ import com.sphincs.view.View;
 public class Model<T> {
 
     private View view;
-    private List<Provider> providers;
+//    private List<Provider> providers;
+    private Provider provider;
 
-    public Model(View view, List<Provider> providers) {
+    public Model(View view, Provider provider) {
         this.view = view;
-        this.providers = providers;
+        this.provider = provider;
     }
 
-    public List<Provider> getProviders() {
-        return providers;
+    public Provider getProvider() {
+        return provider;
     }
 
     public void runInvoice(String... searchRequest) {
         List<T> result = new ArrayList<>();
-        providers.forEach(provider -> result.addAll(provider.runInvoice(searchRequest)));
+        result.addAll(provider.runInvoice(searchRequest));
         view.update(result);
     }
 
